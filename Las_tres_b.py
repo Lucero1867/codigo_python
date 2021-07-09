@@ -3,7 +3,7 @@ import random
 precio = []
 nombre = []
 cantidad = []
-
+total = 0
        
 def ingreso():
     cantidad_articulos = int(input("Número de artículos: "))
@@ -20,16 +20,17 @@ def ingreso():
     elif cantidad_articulos <= 0 and type(cantidad_articulos) == float():
         print("Error!! Ingrese un numero entero")
 
-    # print(nombre, precio, cantidad)
-    # return nombre, precio, cantidad
+def mostrar(total):
+    for i1, i2, i3 in zip(nombre, precio, cantidad):
+        print("Artículo: " + i1)
+        print("Precio: " + "$" + str(i2))
+        print("Cantidad: " + str(i3))
+    total = sum(precio)
+    print("Total a pagar: " + "$" + str(total))
 
-def mostrar():
-    # ingreso()
-    return print(nombre, precio, cantidad)
-    # return sum(precio)
-        
+# def total_recaudado():
     
-
+        
 
 menu = """
 Bienvenido "Las tres B"
@@ -42,30 +43,19 @@ Bienvenido "Las tres B"
 
 Elige una opción: """
 
-opcion = int(input(menu))
+opcion = menu
+validacion = False
 
-# contador = 1
-# # def run():
-# #     if opcion == 1:
-# #         ingreso()
-# #         print(int(input(menu)))
-# #     elif opcion == 2:
-# #         if opcion == 1:
-            
-# #         mostrar()
+while opcion != 5:
+    opcion = int(input(menu))
+
+    if opcion == 1:
+        ingreso()
+        validacion = True
+    elif opcion == 2:
+        if validacion == False:
+            print("Debe ingresar articulos")
+        mostrar(total)
 
 
-# # if __name__ == '__main__':
-# #     run()
-  
-# while opcion <= 5:
-#     opcion = int(input(menu))
-#     if opcion == 1:
-#         ingreso()
-#     # elif opcion == 2:
-#     #     print("hola")   
 
-if opcion == 1:
-    ingreso()
-elif opcion == 2:
-    print(nombre)
